@@ -1,10 +1,8 @@
 <?php
 
-class Unifi {
+define('API_URL', 'http://weixin.ubnt.com.cn/index.php');
 
-    private static function get_api_url() {
-        return 'http://weixin.ubnt.com.cn/index.php';
-    }
+class Unifi {
 
     private function __construct() {}
 
@@ -15,7 +13,7 @@ class Unifi {
             'event' => 'get_url',
             'fromUserName' => $from_user_name
         );
-        return self::_do_get(self::get_api_url(), $fields);
+        return self::_do_get(API_URL, $fields);
     }
 
     public static function unsubscribe($from_user_name) {
@@ -25,7 +23,7 @@ class Unifi {
             'event' => 'unsubscribe',
             'fromUserName' => $from_user_name
         );
-        return self::_do_get(self::get_api_url(), $fields);
+        return self::_do_get(API_URL, $fields);
     }
 
     private static function _do_get($url, $fields) {
